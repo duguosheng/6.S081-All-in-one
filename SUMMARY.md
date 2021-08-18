@@ -12,4 +12,4 @@
     * [1.4 文件系统](tranlate_books/book-riscv-rev1/c1/s1_4.md)
     * [1.5 真实世界](tranlate_books/book-riscv-rev1/c1/s1_5.md)
     * [1.6 练习](tranlate_books/book-riscv-rev1/c1/s1_6.md)
-
+  * [第二章 操作系统架构](tranlate_books/book-riscv-rev1/c2/s2_0.md)
