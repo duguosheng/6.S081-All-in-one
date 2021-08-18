@@ -1,0 +1,19 @@
+{
+	"plugins": [
+		"chapter-fold",
+		"code",
+		"splitter",
+		"pageview-count",
+		"donate"
+	],
+	"pluginsConfig": {
+		"donate": {
+			"wechat": "images/wechatpay.png",
+			"alipay": "images/alipay.png",
+			"title": "",
+			"button": "打赏",
+			"alipayText": "支付宝",
+			"wechatText": "微信"
+		}
+	}
+}
