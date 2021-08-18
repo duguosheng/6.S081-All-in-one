@@ -8,8 +8,8 @@
 	],
 	"pluginsConfig": {
 		"donate": {
-			"wechat": "https://github.com/duguosheng/XV6Book-Translate/blob/main/images/wechatpay.png",
-			"alipay": "https://github.com/duguosheng/XV6Book-Translate/blob/main/images/alipay.png",
+			"wechat": "https://raw.githubusercontent.com/duguosheng/6.S081-All-in-one/main/images/wechatpay.png",
+			"alipay": "https://raw.githubusercontent.com/duguosheng/6.S081-All-in-one/main/images/alipay.png",
 			"title": "",
 			"button": "打赏",
 			"alipayText": "支付宝",
