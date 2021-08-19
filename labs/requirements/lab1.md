@@ -228,7 +228,7 @@ $
 ```c
 p = get a number from left neighbor
 print p
-=loop:
+loop:
     n = get a number from left neighbor
     if (p does not divide n)
         send n to right neighbor

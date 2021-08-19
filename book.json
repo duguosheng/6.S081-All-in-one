@@ -4,8 +4,6 @@
 	"plugins": [
 		"-lunr",
 		"-search",
-		"-highlight",
-		"code-highlighter",
 		"search-pro",
 		"github",
 		"chapter-fold",
@@ -41,7 +39,7 @@
 		"favicon": "images/book.ico",
 		"code-optimize": {
 			"copyButtons": true,
-			"showLines": true
+			"showLines": false
 		}
 	}
 }
