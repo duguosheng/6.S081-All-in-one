@@ -36,7 +36,7 @@
 		"flexible-alerts": {
 			"style": "flat"
 		},
-		"favicon": "images/book.ico",
+		"favicon": "./images/book.ico",
 		"code-optimize": {
 			"copyButtons": true,
 			"showLines": false
