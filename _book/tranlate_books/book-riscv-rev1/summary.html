@@ -4,11 +4,11 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>book-riscv-rev1 · GitBook</title>
+        <title>book-riscv-rev1 · 6.S081 All-In-One</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
-        
+        <meta name="author" content="DuGuoSheng">
         
         
     
@@ -17,11 +17,15 @@
     
             
                 
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
                 <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code-optimize/plugin.css">
                 
             
                 
@@ -37,11 +41,15 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ancre-navigation/style/plugin.css">
                 
             
                 
@@ -77,7 +85,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="c1/s1_0.html" />
+    <link rel="next" href="c1/s0.html" />
     
     
     <link rel="prev" href="../../" />
@@ -107,7 +115,7 @@
 
     
         
-        <li class="header">Summary</li>
+        <li class="header">概述</li>
         
         
     
@@ -145,9 +153,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" data-path="c1/s1_0.html">
+        <li class="chapter " data-level="2.1.1" data-path="c1/s0.html">
             
-                <a href="c1/s1_0.html">
+                <a href="c1/s0.html">
             
                     
                     第一章 操作系统接口
@@ -159,9 +167,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1.1" data-path="c1/s1_1.html">
+        <li class="chapter " data-level="2.1.1.1" data-path="c1/s1.html">
             
-                <a href="c1/s1_1.html">
+                <a href="c1/s1.html">
             
                     
                     1.1 进程和内存
@@ -172,9 +180,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.1.2" data-path="c1/s1_2.html">
+        <li class="chapter " data-level="2.1.1.2" data-path="c1/s2.html">
             
-                <a href="c1/s1_2.html">
+                <a href="c1/s2.html">
             
                     
                     1.2 I/O和文件描述符
@@ -185,9 +193,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.1.3" data-path="c1/s1_3.html">
+        <li class="chapter " data-level="2.1.1.3" data-path="c1/s3.html">
             
-                <a href="c1/s1_3.html">
+                <a href="c1/s3.html">
             
                     
                     1.3 管道
@@ -198,9 +206,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.1.4" data-path="c1/s1_4.html">
+        <li class="chapter " data-level="2.1.1.4" data-path="c1/s4.html">
             
-                <a href="c1/s1_4.html">
+                <a href="c1/s4.html">
             
                     
                     1.4 文件系统
@@ -211,9 +219,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.1.5" data-path="c1/s1_5.html">
+        <li class="chapter " data-level="2.1.1.5" data-path="c1/s5.html">
             
-                <a href="c1/s1_5.html">
+                <a href="c1/s5.html">
             
                     
                     1.5 真实世界
@@ -224,9 +232,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.1.6" data-path="c1/s1_6.html">
+        <li class="chapter " data-level="2.1.1.6" data-path="c1/s6.html">
             
-                <a href="c1/s1_6.html">
+                <a href="c1/s6.html">
             
                     
                     1.6 练习
@@ -242,12 +250,446 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2" data-path="c2/s2_0.html">
+        <li class="chapter " data-level="2.1.2" data-path="c2/s0.html">
             
-                <a href="c2/s2_0.html">
+                <a href="c2/s0.html">
             
                     
                     第二章 操作系统架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="c2/s1.html">
+            
+                <a href="c2/s1.html">
+            
+                    
+                    2.1 抽象系统资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="c2/s2.html">
+            
+                <a href="c2/s2.html">
+            
+                    
+                    2.2 用户态，核心态，以及系统调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.3" data-path="c2/s3.html">
+            
+                <a href="c2/s3.html">
+            
+                    
+                    2.3 内核组织
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.4" data-path="c2/s4.html">
+            
+                <a href="c2/s4.html">
+            
+                    
+                    2.4 代码：XV6架构篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.5" data-path="c2/s5.html">
+            
+                <a href="c2/s5.html">
+            
+                    
+                    2.5 进程概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.6" data-path="c2/s6.html">
+            
+                <a href="c2/s6.html">
+            
+                    
+                    2.6 代码：启动XV6和第一个进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.7" data-path="c2/s7.html">
+            
+                <a href="c2/s7.html">
+            
+                    
+                    2.7 真实世界
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.8" data-path="c2/s8.html">
+            
+                <a href="c2/s8.html">
+            
+                    
+                    2.8 练习
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="c3/s0.html">
+            
+                <a href="c3/s0.html">
+            
+                    
+                    第三章 页表
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="c3/s1.html">
+            
+                <a href="c3/s1.html">
+            
+                    
+                    3.1 页式硬件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="c3/s2.html">
+            
+                <a href="c3/s2.html">
+            
+                    
+                    3.2 内核地址空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.3" data-path="c3/s3.html">
+            
+                <a href="c3/s3.html">
+            
+                    
+                    3.3 代码：创建一个地址空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.4" data-path="c3/s4.html">
+            
+                <a href="c3/s4.html">
+            
+                    
+                    3.4 物理内存分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.5" data-path="c3/s5.html">
+            
+                <a href="c3/s5.html">
+            
+                    
+                    3.5 代码：物理内存分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.6" data-path="c3/s6.html">
+            
+                <a href="c3/s6.html">
+            
+                    
+                    3.6 进程地址空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.7" data-path="c3/s7.html">
+            
+                <a href="c3/s7.html">
+            
+                    
+                    3.7 代码：sbrk
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.8" data-path="c3/s8.html">
+            
+                <a href="c3/s8.html">
+            
+                    
+                    3.8 代码：exec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.9" data-path="c3/s9.html">
+            
+                <a href="c3/s9.html">
+            
+                    
+                    3.9 真实世界
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.10" data-path="c3/s10.html">
+            
+                <a href="c3/s10.html">
+            
+                    
+                    3.10 练习
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="c4/s0.html">
+            
+                <a href="c4/s0.html">
+            
+                    
+                    第四章 陷阱指令和系统调用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="c4/s1.html">
+            
+                <a href="c4/s1.html">
+            
+                    
+                    4.1 RISC-V陷入机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="c4/s2.html">
+            
+                <a href="c4/s2.html">
+            
+                    
+                    4.2 从用户空间陷入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.3" data-path="c4/s3.html">
+            
+                <a href="c4/s3.html">
+            
+                    
+                    4.3 代码：调用系统调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.4" data-path="c4/s4.html">
+            
+                <a href="c4/s4.html">
+            
+                    
+                    4.4 系统调用参数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.5" data-path="c4/s5.html">
+            
+                <a href="c4/s5.html">
+            
+                    
+                    4.5 从内核空间陷入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.6" data-path="c4/s6.html">
+            
+                <a href="c4/s6.html">
+            
+                    
+                    4.6 页面错误异常
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.7" data-path="c4/s7.html">
+            
+                <a href="c4/s7.html">
+            
+                    
+                    4.7 真实世界
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.8" data-path="c4/s8.html">
+            
+                <a href="c4/s8.html">
+            
+                    
+                    4.8 练习
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">实验记录</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../labs/use_git/git1.html">
+            
+                <a href="../../labs/use_git/git1.html">
+            
+                    
+                    版本控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../labs/requirements/summary.html">
+            
+                <a href="../../labs/requirements/summary.html">
+            
+                    
+                    实验内容
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../labs/requirements/lab1.html">
+            
+                <a href="../../labs/requirements/lab1.html">
+            
+                    
+                    Lab1: Xv6 and Unix utilities
             
                 </a>
             
@@ -305,9 +747,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>XV6&#xFF1A;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#xFF0C;&#x7C7B;UNIX&#x7684;&#x6559;&#x5B66;&#x7528;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;</p>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#book-riscv-rev1"><b></b>BOOK-RISCV-REV1</a></li></ul></div><a href="#book-riscv-rev1" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="book-riscv-rev1"><a name="book-riscv-rev1" class="anchor-navigation-ex-anchor" href="#book-riscv-rev1"><i class="fa fa-link" aria-hidden="true"></i></a>BOOK-RISCV-REV1</h1>
+<p>XV6&#xFF1A;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#xFF0C;&#x7C7B;UNIX&#x7684;&#x6559;&#x5B66;&#x7528;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;</p>
 <p>&#x672C;&#x4E66;&#x662F;6.S081&#x6700;&#x91CD;&#x8981;&#x7684;&#x53C2;&#x8003;&#x4E66;&#x76EE;&#xFF0C;&#x5176;&#x4E2D;&#x8BE6;&#x7EC6;&#x7684;&#x4ECB;&#x7ECD;&#x4E86;XV6&#x7684;&#x8BBE;&#x8BA1;&#x7EC6;&#x8282;&#xFF0C;&#x5728;&#x8BFE;&#x7A0B;&#x524D;&#x5F80;&#x5F80;&#x9700;&#x8981;&#x9605;&#x8BFB;&#x5BF9;&#x5E94;&#x7AE0;&#x8282;&#xFF0C;&#x505A;&#x5B9E;&#x9A8C;&#x65F6;&#x4E5F;&#x8981;&#x56DE;&#x6765;&#x67E5;&#x770B;&#x3002;</p>
-
+<footer class="page-footer"><span class="copyright">copyright by duguosheng all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2021-08-19 09:43:44
+</span></footer>
                                 
                                 </section>
                             
@@ -339,7 +784,7 @@
                 </a>
                 
                 
-                <a href="c1/s1_0.html" class="navigation navigation-next " aria-label="Next page: 第一章 操作系统接口">
+                <a href="c1/s0.html" class="navigation navigation-next " aria-label="Next page: 第一章 操作系统接口">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -350,7 +795,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"book-riscv-rev1","level":"2.1","depth":1,"next":{"title":"第一章 操作系统接口","level":"2.1.1","depth":2,"path":"tranlate_books/book-riscv-rev1/c1/s1_0.md","ref":"tranlate_books/book-riscv-rev1/c1/s1_0.md","articles":[{"title":"1.1 进程和内存","level":"2.1.1.1","depth":3,"path":"tranlate_books/book-riscv-rev1/c1/s1_1.md","ref":"tranlate_books/book-riscv-rev1/c1/s1_1.md","articles":[]},{"title":"1.2 I/O和文件描述符","level":"2.1.1.2","depth":3,"path":"tranlate_books/book-riscv-rev1/c1/s1_2.md","ref":"tranlate_books/book-riscv-rev1/c1/s1_2.md","articles":[]},{"title":"1.3 管道","level":"2.1.1.3","depth":3,"path":"tranlate_books/book-riscv-rev1/c1/s1_3.md","ref":"tranlate_books/book-riscv-rev1/c1/s1_3.md","articles":[]},{"title":"1.4 文件系统","level":"2.1.1.4","depth":3,"path":"tranlate_books/book-riscv-rev1/c1/s1_4.md","ref":"tranlate_books/book-riscv-rev1/c1/s1_4.md","articles":[]},{"title":"1.5 真实世界","level":"2.1.1.5","depth":3,"path":"tranlate_books/book-riscv-rev1/c1/s1_5.md","ref":"tranlate_books/book-riscv-rev1/c1/s1_5.md","articles":[]},{"title":"1.6 练习","level":"2.1.1.6","depth":3,"path":"tranlate_books/book-riscv-rev1/c1/s1_6.md","ref":"tranlate_books/book-riscv-rev1/c1/s1_6.md","articles":[]}]},"previous":{"title":"课程介绍","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","code","splitter","pageview-count","donate","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"donate":{"alipay":"https://raw.githubusercontent.com/duguosheng/6.S081-All-in-one/main/images/alipay.png","alipayText":"支付宝","button":"打赏","title":"","wechat":"https://raw.githubusercontent.com/duguosheng/6.S081-All-in-one/main/images/wechatpay.png","wechatText":"微信"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tranlate_books/book-riscv-rev1/summary.md","mtime":"2021-08-18T13:39:32.537Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-18T14:37:37.699Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"book-riscv-rev1","level":"2.1","depth":1,"next":{"title":"第一章 操作系统接口","level":"2.1.1","depth":2,"path":"tranlate_books/book-riscv-rev1/c1/s0.md","ref":"tranlate_books/book-riscv-rev1/c1/s0.md","articles":[{"title":"1.1 进程和内存","level":"2.1.1.1","depth":3,"path":"tranlate_books/book-riscv-rev1/c1/s1.md","ref":"tranlate_books/book-riscv-rev1/c1/s1.md","articles":[]},{"title":"1.2 I/O和文件描述符","level":"2.1.1.2","depth":3,"path":"tranlate_books/book-riscv-rev1/c1/s2.md","ref":"tranlate_books/book-riscv-rev1/c1/s2.md","articles":[]},{"title":"1.3 管道","level":"2.1.1.3","depth":3,"path":"tranlate_books/book-riscv-rev1/c1/s3.md","ref":"tranlate_books/book-riscv-rev1/c1/s3.md","articles":[]},{"title":"1.4 文件系统","level":"2.1.1.4","depth":3,"path":"tranlate_books/book-riscv-rev1/c1/s4.md","ref":"tranlate_books/book-riscv-rev1/c1/s4.md","articles":[]},{"title":"1.5 真实世界","level":"2.1.1.5","depth":3,"path":"tranlate_books/book-riscv-rev1/c1/s5.md","ref":"tranlate_books/book-riscv-rev1/c1/s5.md","articles":[]},{"title":"1.6 练习","level":"2.1.1.6","depth":3,"path":"tranlate_books/book-riscv-rev1/c1/s6.md","ref":"tranlate_books/book-riscv-rev1/c1/s6.md","articles":[]}]},"previous":{"title":"课程介绍","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","code-highlighter","search-pro","github","chapter-fold","code-optimize","splitter","pageview-count","donate","tbfed-pagefooter","flexible-alerts","ancre-navigation","custom-favicon"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"copyright by duguosheng","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"code-highlighter":{},"chapter-fold":{},"github":{"url":"https://github.com/duguosheng"},"splitter":{},"search-pro":{},"donate":{"alipay":"https://raw.githubusercontent.com/duguosheng/6.S081-All-in-one/main/images/alipay.png","alipayText":"支付宝","button":"打赏","title":"","wechat":"https://raw.githubusercontent.com/duguosheng/6.S081-All-in-one/main/images/wechatpay.png","wechatText":"微信"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"images/book.ico","pageview-count":{},"custom-favicon":{},"ancre-navigation":{"associatedWithSummary":true,"float":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showLevel":true},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"flat","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"code-optimize":{"copyButtons":true,"showLines":true}},"theme":"default","author":"DuGuoSheng","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"6.S081 All-In-One","gitbook":"*"},"file":{"path":"tranlate_books/book-riscv-rev1/summary.md","mtime":"2021-08-19T01:43:44.759Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-19T05:21:12.980Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -360,11 +805,23 @@
     <script src="../../gitbook/theme.js"></script>
     
         
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
         <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        <script src="../../gitbook/gitbook-plugin-code-optimize/plugin.js"></script>
         
     
         
@@ -380,23 +837,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
         
     
         

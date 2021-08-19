@@ -1,0 +1,863 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>4.2 从用户空间陷入 · 6.S081 All-In-One</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="DuGuoSheng">
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-code-optimize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-ancre-navigation/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="s3.html" />
+    
+    
+    <link rel="prev" href="s1.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">概述</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    课程介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">文档翻译</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../summary.html">
+            
+                <a href="../summary.html">
+            
+                    
+                    book-riscv-rev1
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../c1/s0.html">
+            
+                <a href="../c1/s0.html">
+            
+                    
+                    第一章 操作系统接口
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../c1/s1.html">
+            
+                <a href="../c1/s1.html">
+            
+                    
+                    1.1 进程和内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.2" data-path="../c1/s2.html">
+            
+                <a href="../c1/s2.html">
+            
+                    
+                    1.2 I/O和文件描述符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.3" data-path="../c1/s3.html">
+            
+                <a href="../c1/s3.html">
+            
+                    
+                    1.3 管道
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.4" data-path="../c1/s4.html">
+            
+                <a href="../c1/s4.html">
+            
+                    
+                    1.4 文件系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.5" data-path="../c1/s5.html">
+            
+                <a href="../c1/s5.html">
+            
+                    
+                    1.5 真实世界
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.6" data-path="../c1/s6.html">
+            
+                <a href="../c1/s6.html">
+            
+                    
+                    1.6 练习
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../c2/s0.html">
+            
+                <a href="../c2/s0.html">
+            
+                    
+                    第二章 操作系统架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../c2/s1.html">
+            
+                <a href="../c2/s1.html">
+            
+                    
+                    2.1 抽象系统资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../c2/s2.html">
+            
+                <a href="../c2/s2.html">
+            
+                    
+                    2.2 用户态，核心态，以及系统调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.3" data-path="../c2/s3.html">
+            
+                <a href="../c2/s3.html">
+            
+                    
+                    2.3 内核组织
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.4" data-path="../c2/s4.html">
+            
+                <a href="../c2/s4.html">
+            
+                    
+                    2.4 代码：XV6架构篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.5" data-path="../c2/s5.html">
+            
+                <a href="../c2/s5.html">
+            
+                    
+                    2.5 进程概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.6" data-path="../c2/s6.html">
+            
+                <a href="../c2/s6.html">
+            
+                    
+                    2.6 代码：启动XV6和第一个进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.7" data-path="../c2/s7.html">
+            
+                <a href="../c2/s7.html">
+            
+                    
+                    2.7 真实世界
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.8" data-path="../c2/s8.html">
+            
+                <a href="../c2/s8.html">
+            
+                    
+                    2.8 练习
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../c3/s0.html">
+            
+                <a href="../c3/s0.html">
+            
+                    
+                    第三章 页表
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../c3/s1.html">
+            
+                <a href="../c3/s1.html">
+            
+                    
+                    3.1 页式硬件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../c3/s2.html">
+            
+                <a href="../c3/s2.html">
+            
+                    
+                    3.2 内核地址空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.3" data-path="../c3/s3.html">
+            
+                <a href="../c3/s3.html">
+            
+                    
+                    3.3 代码：创建一个地址空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.4" data-path="../c3/s4.html">
+            
+                <a href="../c3/s4.html">
+            
+                    
+                    3.4 物理内存分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.5" data-path="../c3/s5.html">
+            
+                <a href="../c3/s5.html">
+            
+                    
+                    3.5 代码：物理内存分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.6" data-path="../c3/s6.html">
+            
+                <a href="../c3/s6.html">
+            
+                    
+                    3.6 进程地址空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.7" data-path="../c3/s7.html">
+            
+                <a href="../c3/s7.html">
+            
+                    
+                    3.7 代码：sbrk
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.8" data-path="../c3/s8.html">
+            
+                <a href="../c3/s8.html">
+            
+                    
+                    3.8 代码：exec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.9" data-path="../c3/s9.html">
+            
+                <a href="../c3/s9.html">
+            
+                    
+                    3.9 真实世界
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.10" data-path="../c3/s10.html">
+            
+                <a href="../c3/s10.html">
+            
+                    
+                    3.10 练习
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="s0.html">
+            
+                <a href="s0.html">
+            
+                    
+                    第四章 陷阱指令和系统调用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="s1.html">
+            
+                <a href="s1.html">
+            
+                    
+                    4.1 RISC-V陷入机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.1.4.2" data-path="s2.html">
+            
+                <a href="s2.html">
+            
+                    
+                    4.2 从用户空间陷入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.3" data-path="s3.html">
+            
+                <a href="s3.html">
+            
+                    
+                    4.3 代码：调用系统调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.4" data-path="s4.html">
+            
+                <a href="s4.html">
+            
+                    
+                    4.4 系统调用参数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.5" data-path="s5.html">
+            
+                <a href="s5.html">
+            
+                    
+                    4.5 从内核空间陷入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.6" data-path="s6.html">
+            
+                <a href="s6.html">
+            
+                    
+                    4.6 页面错误异常
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.7" data-path="s7.html">
+            
+                <a href="s7.html">
+            
+                    
+                    4.7 真实世界
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.8" data-path="s8.html">
+            
+                <a href="s8.html">
+            
+                    
+                    4.8 练习
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">实验记录</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../../labs/use_git/git1.html">
+            
+                <a href="../../../labs/use_git/git1.html">
+            
+                    
+                    版本控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../../labs/requirements/summary.html">
+            
+                <a href="../../../labs/requirements/summary.html">
+            
+                    
+                    实验内容
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../../labs/requirements/lab1.html">
+            
+                <a href="../../../labs/requirements/lab1.html">
+            
+                    
+                    Lab1: Xv6 and Unix utilities
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >4.2 从用户空间陷入</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#42-&#x4ECE;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x9677;&#x5165;"><b></b>4.2 &#x4ECE;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x9677;&#x5165;</a></li></ul></div><a href="#42-&#x4ECE;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x9677;&#x5165;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="42-&#x4ECE;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x9677;&#x5165;"><a name="42-&#x4ECE;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x9677;&#x5165;" class="anchor-navigation-ex-anchor" href="#42-&#x4ECE;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x9677;&#x5165;"><i class="fa fa-link" aria-hidden="true"></i></a>4.2 &#x4ECE;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x9677;&#x5165;</h1>
+<p>&#x5982;&#x679C;&#x7528;&#x6237;&#x7A0B;&#x5E8F;&#x53D1;&#x51FA;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF08;<code>ecall</code>&#x6307;&#x4EE4;&#xFF09;&#xFF0C;&#x6216;&#x8005;&#x505A;&#x4E86;&#x4E00;&#x4E9B;&#x975E;&#x6CD5;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x6216;&#x8005;&#x8BBE;&#x5907;&#x4E2D;&#x65AD;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x4E2D;&#x6267;&#x884C;&#x65F6;&#x5C31;&#x53EF;&#x80FD;&#x4F1A;&#x4EA7;&#x751F;&#x9677;&#x9631;&#x3002;&#x6765;&#x81EA;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x7684;&#x9677;&#x9631;&#x7684;&#x9AD8;&#x7EA7;&#x8DEF;&#x5F84;&#x662F;<code>uservec</code> (<strong><em>kernel/trampoline.S</em></strong>:16)&#xFF0C;&#x7136;&#x540E;&#x662F;<code>usertrap</code> (<strong><em>kernel/trap.c</em></strong>:37)&#xFF1B;&#x8FD4;&#x56DE;&#x65F6;&#xFF0C;&#x5148;&#x662F;<code>usertrapret</code> (<strong><em>kernel/trap.c</em></strong>:90)&#xFF0C;&#x7136;&#x540E;&#x662F;<code>userret</code> (<strong><em>kernel/trampoline.S</em></strong>:16)&#x3002;</p>
+<p>&#x6765;&#x81EA;&#x7528;&#x6237;&#x4EE3;&#x7801;&#x7684;&#x9677;&#x9631;&#x6BD4;&#x6765;&#x81EA;&#x5185;&#x6838;&#x7684;&#x9677;&#x9631;&#x66F4;&#x5177;&#x6311;&#x6218;&#x6027;&#xFF0C;&#x56E0;&#x4E3A;<code>satp</code>&#x6307;&#x5411;&#x4E0D;&#x6620;&#x5C04;&#x5185;&#x6838;&#x7684;&#x7528;&#x6237;&#x9875;&#x8868;&#xFF0C;&#x6808;&#x6307;&#x9488;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x65E0;&#x6548;&#x751A;&#x81F3;&#x6076;&#x610F;&#x7684;&#x503C;&#x3002;</p>
+<p>&#x7531;&#x4E8E;RISC-V&#x786C;&#x4EF6;&#x5728;&#x9677;&#x9631;&#x671F;&#x95F4;&#x4E0D;&#x4F1A;&#x5207;&#x6362;&#x9875;&#x8868;&#xFF0C;&#x6240;&#x4EE5;&#x7528;&#x6237;&#x9875;&#x8868;&#x5FC5;&#x987B;&#x5305;&#x62EC;<code>uservec</code>&#xFF08;<strong>stvec</strong>&#x6307;&#x5411;&#x7684;&#x9677;&#x9631;&#x5411;&#x91CF;&#x6307;&#x4EE4;&#xFF09;&#x7684;&#x6620;&#x5C04;&#x3002;<code>uservec</code>&#x5FC5;&#x987B;&#x5207;&#x6362;<code>satp</code>&#x4EE5;&#x6307;&#x5411;&#x5185;&#x6838;&#x9875;&#x8868;&#xFF1B;&#x4E3A;&#x4E86;&#x5728;&#x5207;&#x6362;&#x540E;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x6307;&#x4EE4;&#xFF0C;<code>uservec</code>&#x5FC5;&#x987B;&#x5728;&#x5185;&#x6838;&#x9875;&#x8868;&#x4E2D;&#x4E0E;&#x7528;&#x6237;&#x9875;&#x8868;&#x4E2D;&#x6620;&#x5C04;&#x76F8;&#x540C;&#x7684;&#x5730;&#x5740;&#x3002;</p>
+<p>xv6&#x4F7F;&#x7528;&#x5305;&#x542B;<code>uservec</code>&#x7684;&#x8E66;&#x5E8A;&#x9875;&#x9762;&#xFF08;trampoline page&#xFF09;&#x6765;&#x6EE1;&#x8DB3;&#x8FD9;&#x4E9B;&#x7EA6;&#x675F;&#x3002;xv6&#x5C06;&#x8E66;&#x5E8A;&#x9875;&#x9762;&#x6620;&#x5C04;&#x5230;&#x5185;&#x6838;&#x9875;&#x8868;&#x548C;&#x6BCF;&#x4E2A;&#x7528;&#x6237;&#x9875;&#x8868;&#x4E2D;&#x76F8;&#x540C;&#x7684;&#x865A;&#x62DF;&#x5730;&#x5740;&#x3002;&#x8FD9;&#x4E2A;&#x865A;&#x62DF;&#x5730;&#x5740;&#x662F;<code>TRAMPOLINE</code>&#xFF08;&#x5982;&#x56FE;2.3&#x548C;&#x56FE;3.3&#x6240;&#x793A;&#xFF09;&#x3002;&#x8E66;&#x5E8A;&#x5185;&#x5BB9;&#x5728;<strong><em>trampoline.S</em></strong>&#x4E2D;&#x8BBE;&#x7F6E;&#xFF0C;&#x5E76;&#x4E14;&#xFF08;&#x5F53;&#x6267;&#x884C;&#x7528;&#x6237;&#x4EE3;&#x7801;&#x65F6;&#xFF09;<code>stvec</code>&#x8BBE;&#x7F6E;&#x4E3A;<code>uservec</code> (<strong><em>kernel/trampoline.S</em></strong>:16)&#x3002;</p>
+<p>&#x5F53;<code>uservec</code>&#x542F;&#x52A8;&#x65F6;&#xFF0C;&#x6240;&#x6709;32&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#x90FD;&#x5305;&#x542B;&#x88AB;&#x4E2D;&#x65AD;&#x4EE3;&#x7801;&#x6240;&#x62E5;&#x6709;&#x7684;&#x503C;&#x3002;&#x4F46;&#x662F;<code>uservec</code>&#x9700;&#x8981;&#x80FD;&#x591F;&#x4FEE;&#x6539;&#x4E00;&#x4E9B;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x4EE5;&#x4FBF;&#x8BBE;&#x7F6E;<code>satp</code>&#x5E76;&#x751F;&#x6210;&#x4FDD;&#x5B58;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x5730;&#x5740;&#x3002;RISC-V&#x4EE5;<code>sscratch</code>&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x5F62;&#x5F0F;&#x63D0;&#x4F9B;&#x4E86;&#x5E2E;&#x52A9;&#x3002;<code>uservec</code>&#x5F00;&#x59CB;&#x65F6;&#x7684;<code>csrrw</code>&#x6307;&#x4EE4;&#x4EA4;&#x6362;&#x4E86;<code>a0</code>&#x548C;<code>sscratch</code>&#x7684;&#x5185;&#x5BB9;&#x3002;&#x73B0;&#x5728;&#x7528;&#x6237;&#x4EE3;&#x7801;&#x7684;<code>a0</code>&#x88AB;&#x4FDD;&#x5B58;&#x4E86;&#xFF1B;<code>uservec</code>&#x6709;&#x4E00;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#xFF08;<code>a0</code>&#xFF09;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF1B;<code>a0</code>&#x5305;&#x542B;&#x5185;&#x6838;&#x4EE5;&#x524D;&#x653E;&#x5728;<code>sscratch</code>&#x4E2D;&#x7684;&#x503C;&#x3002;</p>
+<p><code>uservec</code>&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x662F;&#x4FDD;&#x5B58;&#x7528;&#x6237;&#x5BC4;&#x5B58;&#x5668;&#x3002;&#x5728;&#x8FDB;&#x5165;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x4E4B;&#x524D;&#xFF0C;&#x5185;&#x6838;&#x5148;&#x524D;&#x5C06;<code>sscratch</code>&#x8BBE;&#x7F6E;&#x4E3A;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x9677;&#x9631;&#x5E27;&#xFF0C;&#x8BE5;&#x5E27;&#xFF08;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF09;&#x5177;&#x6709;&#x4FDD;&#x5B58;&#x6240;&#x6709;&#x7528;&#x6237;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x7A7A;&#x95F4;(<strong><em>kernel/proc.h</em></strong>:44)&#x3002;&#x56E0;&#x4E3A;<code>satp</code>&#x4ECD;&#x7136;&#x6307;&#x5411;&#x7528;&#x6237;&#x9875;&#x8868;&#xFF0C;&#x6240;&#x4EE5;<code>uservec</code>&#x9700;&#x8981;&#x5C06;&#x9677;&#x9631;&#x5E27;&#x6620;&#x5C04;&#x5230;&#x7528;&#x6237;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x4E2D;&#x3002;&#x6BCF;&#x5F53;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x65F6;&#xFF0C;xv6&#x5C31;&#x4E3A;&#x8BE5;&#x8FDB;&#x7A0B;&#x7684;&#x9677;&#x9631;&#x5E27;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#xFF0C;&#x5E76;&#x5B89;&#x6392;&#x5B83;&#x59CB;&#x7EC8;&#x6620;&#x5C04;&#x5728;&#x7528;&#x6237;&#x865A;&#x62DF;&#x5730;&#x5740;<code>TRAPFRAME</code>&#xFF0C;&#x8BE5;&#x5730;&#x5740;&#x5C31;&#x5728;<code>TRAMPOLINE</code>&#x4E0B;&#x9762;&#x3002;&#x5C3D;&#x7BA1;&#x4F7F;&#x7528;&#x7269;&#x7406;&#x5730;&#x5740;&#xFF0C;&#x8BE5;&#x8FDB;&#x7A0B;&#x7684;<code>p-&gt;trapframe</code>&#x4ECD;&#x6307;&#x5411;&#x9677;&#x9631;&#x5E27;&#xFF0C;&#x8FD9;&#x6837;&#x5185;&#x6838;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5185;&#x6838;&#x9875;&#x8868;&#x4F7F;&#x7528;&#x5B83;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#x5728;&#x4EA4;&#x6362;<code>a0</code>&#x548C;<code>sscratch</code>&#x4E4B;&#x540E;&#xFF0C;<code>a0</code>&#x6301;&#x6709;&#x6307;&#x5411;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x9677;&#x9631;&#x5E27;&#x7684;&#x6307;&#x9488;&#x3002;<code>uservec</code>&#x73B0;&#x5728;&#x4FDD;&#x5B58;&#x90A3;&#x91CC;&#x7684;&#x6240;&#x6709;&#x7528;&#x6237;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x5305;&#x62EC;&#x4ECE;<code>sscratch</code>&#x8BFB;&#x53D6;&#x7684;&#x7528;&#x6237;&#x7684;<code>a0</code>&#x3002;</p>
+<p>&#x9677;&#x9631;&#x5E27;&#x5305;&#x542B;&#x6307;&#x5411;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x5185;&#x6838;&#x6808;&#x7684;&#x6307;&#x9488;&#x3001;&#x5F53;&#x524D;CPU&#x7684;<code>hartid</code>&#x3001;<code>usertrap</code>&#x7684;&#x5730;&#x5740;&#x548C;&#x5185;&#x6838;&#x9875;&#x8868;&#x7684;&#x5730;&#x5740;&#x3002;<code>uservec</code>&#x53D6;&#x5F97;&#x8FD9;&#x4E9B;&#x503C;&#xFF0C;&#x5C06;<code>satp</code>&#x5207;&#x6362;&#x5230;&#x5185;&#x6838;&#x9875;&#x8868;&#xFF0C;&#x5E76;&#x8C03;&#x7528;<code>usertrap</code>&#x3002;</p>
+<p><code>usertrap</code>&#x7684;&#x4EFB;&#x52A1;&#x662F;&#x786E;&#x5B9A;&#x9677;&#x9631;&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x5904;&#x7406;&#x5E76;&#x8FD4;&#x56DE;(<strong><em>kernel/trap.c</em></strong>:37)&#x3002;&#x5982;&#x4E0A;&#x6240;&#x8FF0;&#xFF0C;&#x5B83;&#x9996;&#x5148;&#x6539;&#x53D8;<code>stvec</code>&#xFF0C;&#x8FD9;&#x6837;&#x5185;&#x6838;&#x4E2D;&#x7684;&#x9677;&#x9631;&#x5C06;&#x7531;<code>kernelvec</code>&#x5904;&#x7406;&#x3002;&#x5B83;&#x4FDD;&#x5B58;&#x4E86;<code>sepc</code>&#xFF08;&#x4FDD;&#x5B58;&#x7684;&#x7528;&#x6237;&#x7A0B;&#x5E8F;&#x8BA1;&#x6570;&#x5668;&#xFF09;&#xFF0C;&#x518D;&#x6B21;&#x4FDD;&#x5B58;&#x662F;&#x56E0;&#x4E3A;<code>usertrap</code>&#x4E2D;&#x53EF;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x5207;&#x6362;&#xFF0C;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;<code>sepc</code>&#x88AB;&#x8986;&#x76D6;&#x3002;&#x5982;&#x679C;&#x9677;&#x9631;&#x6765;&#x81EA;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF0C;<code>syscall</code>&#x4F1A;&#x5904;&#x7406;&#x5B83;&#xFF1B;&#x5982;&#x679C;&#x662F;&#x8BBE;&#x5907;&#x4E2D;&#x65AD;&#xFF0C;<code>devintr</code>&#x4F1A;&#x5904;&#x7406;&#xFF1B;&#x5426;&#x5219;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x5F02;&#x5E38;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x6740;&#x6B7B;&#x9519;&#x8BEF;&#x8FDB;&#x7A0B;&#x3002;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x8DEF;&#x5F84;&#x5728;&#x4FDD;&#x5B58;&#x7684;&#x7528;&#x6237;&#x7A0B;&#x5E8F;&#x8BA1;&#x6570;&#x5668;<code>pc</code>&#x4E0A;&#x52A0;4&#xFF0C;&#x56E0;&#x4E3A;&#x5728;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;RISC-V&#x4F1A;&#x7559;&#x4E0B;&#x6307;&#x5411;<code>ecall</code>&#x6307;&#x4EE4;&#x7684;&#x7A0B;&#x5E8F;&#x6307;&#x9488;&#xFF08;&#x8FD4;&#x56DE;&#x540E;&#x9700;&#x8981;&#x6267;&#x884C;<code>ecall</code>&#x4E4B;&#x540E;&#x7684;&#x4E0B;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#xFF09;&#x3002;&#x5728;&#x9000;&#x51FA;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;<code>usertrap</code>&#x68C0;&#x67E5;&#x8FDB;&#x7A0B;&#x662F;&#x5DF2;&#x7ECF;&#x88AB;&#x6740;&#x6B7B;&#x8FD8;&#x662F;&#x5E94;&#x8BE5;&#x8BA9;&#x51FA;CPU&#xFF08;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x9677;&#x9631;&#x662F;&#x8BA1;&#x65F6;&#x5668;&#x4E2D;&#x65AD;&#xFF09;&#x3002;</p>
+<p>&#x8FD4;&#x56DE;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x7684;&#x7B2C;&#x4E00;&#x6B65;&#x662F;&#x8C03;&#x7528;<code>usertrapret</code> (<strong><em>kernel/trap.c</em></strong>:90)&#x3002;&#x8BE5;&#x51FD;&#x6570;&#x8BBE;&#x7F6E;RISC-V&#x63A7;&#x5236;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x4E3A;&#x5C06;&#x6765;&#x6765;&#x81EA;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x7684;&#x9677;&#x9631;&#x505A;&#x51C6;&#x5907;&#x3002;&#x8FD9;&#x6D89;&#x53CA;&#x5230;&#x5C06;<code>stvec</code>&#x66F4;&#x6539;&#x4E3A;&#x6307;&#x5411;<code>uservec</code>&#xFF0C;&#x51C6;&#x5907;<code>uservec</code>&#x6240;&#x4F9D;&#x8D56;&#x7684;&#x9677;&#x9631;&#x5E27;&#x5B57;&#x6BB5;&#xFF0C;&#x5E76;&#x5C06;<code>sepc</code>&#x8BBE;&#x7F6E;&#x4E3A;&#x4E4B;&#x524D;&#x4FDD;&#x5B58;&#x7684;&#x7528;&#x6237;&#x7A0B;&#x5E8F;&#x8BA1;&#x6570;&#x5668;&#x3002;&#x6700;&#x540E;&#xFF0C;<code>usertrapret</code>&#x5728;&#x7528;&#x6237;&#x548C;&#x5185;&#x6838;&#x9875;&#x8868;&#x4E2D;&#x90FD;&#x6620;&#x5C04;&#x7684;&#x8E66;&#x5E8A;&#x9875;&#x9762;&#x4E0A;&#x8C03;&#x7528;<code>userret</code>&#xFF1B;&#x539F;&#x56E0;&#x662F;<code>userret</code>&#x4E2D;&#x7684;&#x6C47;&#x7F16;&#x4EE3;&#x7801;&#x4F1A;&#x5207;&#x6362;&#x9875;&#x8868;&#x3002;</p>
+<p><code>usertrapret</code>&#x5BF9;<code>userret</code>&#x7684;&#x8C03;&#x7528;&#x5C06;&#x6307;&#x9488;&#x4F20;&#x9012;&#x5230;<code>a0</code>&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#x7528;&#x6237;&#x9875;&#x8868;&#x548C;<code>a1</code>&#x4E2D;&#x7684;<code>TRAPFRAME</code> (<strong><em>kernel/trampoline.S</em></strong>:88)&#x3002;<code>userret</code>&#x5C06;<code>satp</code>&#x5207;&#x6362;&#x5230;&#x8FDB;&#x7A0B;&#x7684;&#x7528;&#x6237;&#x9875;&#x8868;&#x3002;&#x56DE;&#x60F3;&#x4E00;&#x4E0B;&#xFF0C;&#x7528;&#x6237;&#x9875;&#x8868;&#x540C;&#x65F6;&#x6620;&#x5C04;&#x8E66;&#x5E8A;&#x9875;&#x9762;&#x548C;<code>TRAPFRAME</code>&#xFF0C;&#x4F46;&#x6CA1;&#x6709;&#x4ECE;&#x5185;&#x6838;&#x6620;&#x5C04;&#x5176;&#x4ED6;&#x5185;&#x5BB9;&#x3002;&#x540C;&#x6837;&#xFF0C;&#x8E66;&#x5E8A;&#x9875;&#x9762;&#x6620;&#x5C04;&#x5728;&#x7528;&#x6237;&#x548C;&#x5185;&#x6838;&#x9875;&#x8868;&#x4E2D;&#x7684;&#x540C;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x5730;&#x5740;&#x4E0A;&#x7684;&#x4E8B;&#x5B9E;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x5728;&#x66F4;&#x6539;<code>satp</code>&#x540E;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002;<code>userret</code>&#x590D;&#x5236;&#x9677;&#x9631;&#x5E27;&#x4FDD;&#x5B58;&#x7684;&#x7528;&#x6237;<code>a0</code>&#x5230;<code>sscratch</code>&#xFF0C;&#x4E3A;&#x4EE5;&#x540E;&#x4E0E;<code>TRAPFRAME</code>&#x7684;&#x4EA4;&#x6362;&#x505A;&#x51C6;&#x5907;&#x3002;&#x4ECE;&#x6B64;&#x523B;&#x5F00;&#x59CB;&#xFF0C;<code>userret</code>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x552F;&#x4E00;&#x6570;&#x636E;&#x662F;&#x5BC4;&#x5B58;&#x5668;&#x5185;&#x5BB9;&#x548C;&#x9677;&#x9631;&#x5E27;&#x7684;&#x5185;&#x5BB9;&#x3002;&#x4E0B;&#x4E00;&#x4E2A;<code>userret</code>&#x4ECE;&#x9677;&#x9631;&#x5E27;&#x4E2D;&#x6062;&#x590D;&#x4FDD;&#x5B58;&#x7684;&#x7528;&#x6237;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x505A;<code>a0</code>&#x4E0E;<code>sscratch</code>&#x7684;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x4EA4;&#x6362;&#x6765;&#x6062;&#x590D;&#x7528;&#x6237;<code>a0</code>&#x5E76;&#x4E3A;&#x4E0B;&#x4E00;&#x4E2A;&#x9677;&#x9631;&#x4FDD;&#x5B58;<code>TRAPFRAME</code>&#xFF0C;&#x5E76;&#x4F7F;&#x7528;<code>sret</code>&#x8FD4;&#x56DE;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x3002; </p>
+<footer class="page-footer"><span class="copyright">copyright by duguosheng all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2021-08-19 11:38:14
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="s1.html" class="navigation navigation-prev " aria-label="Previous page: 4.1 RISC-V陷入机制">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="s3.html" class="navigation navigation-next " aria-label="Next page: 4.3 代码：调用系统调用">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"4.2 从用户空间陷入","level":"2.1.4.2","depth":3,"next":{"title":"4.3 代码：调用系统调用","level":"2.1.4.3","depth":3,"path":"tranlate_books/book-riscv-rev1/c4/s3.md","ref":"tranlate_books/book-riscv-rev1/c4/s3.md","articles":[]},"previous":{"title":"4.1 RISC-V陷入机制","level":"2.1.4.1","depth":3,"path":"tranlate_books/book-riscv-rev1/c4/s1.md","ref":"tranlate_books/book-riscv-rev1/c4/s1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","code-highlighter","search-pro","github","chapter-fold","code-optimize","splitter","pageview-count","donate","tbfed-pagefooter","flexible-alerts","ancre-navigation","custom-favicon"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"copyright by duguosheng","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"code-highlighter":{},"chapter-fold":{},"github":{"url":"https://github.com/duguosheng"},"splitter":{},"search-pro":{},"donate":{"alipay":"https://raw.githubusercontent.com/duguosheng/6.S081-All-in-one/main/images/alipay.png","alipayText":"支付宝","button":"打赏","title":"","wechat":"https://raw.githubusercontent.com/duguosheng/6.S081-All-in-one/main/images/wechatpay.png","wechatText":"微信"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"images/book.ico","pageview-count":{},"custom-favicon":{},"ancre-navigation":{"associatedWithSummary":true,"float":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showLevel":true},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"flat","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"code-optimize":{"copyButtons":true,"showLines":true}},"theme":"default","author":"DuGuoSheng","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"6.S081 All-In-One","gitbook":"*"},"file":{"path":"tranlate_books/book-riscv-rev1/c4/s2.md","mtime":"2021-08-19T03:38:14.612Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-19T05:21:12.980Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-code-optimize/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
