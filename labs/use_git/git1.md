@@ -3,7 +3,7 @@
 > [!DANGER]
 > MIT 6.S081 这门课程每个lab对应一个git分支，所以请不要擅自将***.git***目录删除或更改origin指向的仓库地址
 
-1.  **首先将mit的实验代码克隆到本地**
+(1).  **首先将mit的实验代码克隆到本地**
 
 ```bash
 git clone git://g.csail.mit.edu/xv6-labs-2020
@@ -11,7 +11,7 @@ git clone git://g.csail.mit.edu/xv6-labs-2020
 
 
 
-2. **在github创建一个新的空仓库**
+(2). **在github创建一个新的空仓库**
 
 创建完成后会有提示代码，请**不要**根据提示代码操作，并且记下右图中红色标注的仓库地址
 
@@ -19,7 +19,7 @@ git clone git://g.csail.mit.edu/xv6-labs-2020
 
 
 
-3. **添加git仓库地址**
+(3). **添加git仓库地址**
 
 查看本地仓库的git配置文件，可以看到***origin***主机名下已经有了对应的上游仓库地址
 
@@ -41,7 +41,7 @@ cat .git/config
 
 
 
-4. **`git push`命令**
+(4). **`git push`命令**
 
 - **功能**：`git push`命令用于从将本地的分支版本上传到远程并合并。
 - **命令格式**：
@@ -60,7 +60,7 @@ git push <远程主机名> <本地分支名>
 
 
 
-5. **将实验代码推送github仓库**
+(5). **将实验代码推送github仓库**
 
 例如：将实验1用到的***util***分支推送到github
 
@@ -75,7 +75,7 @@ git push github util:util
 
 
 
-6. **xv6实验git分支建议**
+(6). **xv6实验git分支建议**
 
 建议是每个实验创建一个测试分支，例如对于***util***来说
 
@@ -96,6 +96,6 @@ git push github util:util
 
 
 
-7. **其他**
+(7). **其他**
 
 你还可以添加gitee，防止github有时无法访问的问题

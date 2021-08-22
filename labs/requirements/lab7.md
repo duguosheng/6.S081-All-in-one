@@ -136,6 +136,7 @@ $ ./ph 2
 > * `pthread_mutex_init(&lock, NULL); // initialize the lock`
 > * `pthread_mutex_lock(&lock);       // acquire lock`
 > * `pthread_mutex_unlock(&lock);     // release lock`
+> 
 > 当`make grade`说您的代码通过`ph_safe`测试时，您就完成了，该测试需要两个线程的键缺失数为0。在此时，`ph_fast`测试失败是正常的。
 
 不要忘记调用`pthread_mutex_init()`。首先用1个线程测试代码，然后用2个线程测试代码。您主要需要测试：程序运行是否正确呢（即，您是否消除了丢失的键？）？与单线程版本相比，双线程版本是否实现了并行加速（即单位时间内的工作量更多）？
