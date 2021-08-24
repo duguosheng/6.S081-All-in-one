@@ -84,10 +84,11 @@
     * [8.14 代码：系统调用](tranlate_books/book-riscv-rev1/c8/s14.md)
     * [8.15 真实世界](tranlate_books/book-riscv-rev1/c8/s15.md)
     * [8.16 练习](tranlate_books/book-riscv-rev1/c8/s16.md)
-* [Introduction](tranlate_books\Introduction.md)
-* [使用GNU Debugger](tranlate_books\Use GUN Debugger.md)
-* [C Pointers, gdb](tranlate_books\C Pointers, gdb.md)
-* [Calling Convention](tranlate_books\Calling Convention.md)
+* [Introduction](tranlate_books/Introduction.md)
+* [使用GNU Debugger](tranlate_books/Use GUN Debugger.md)
+* [C Pointers, gdb](tranlate_books/C Pointers, gdb.md)
+* [Calling Convention](tranlate_books/Calling Convention.md)
+* [Journaling the Linux ext2fs Filesystem](tranlate_books/Journaling the Linux ext2fs Filesystem.md)
 
 ## 实验记录
 * [版本控制](labs/use_git/git1.md)

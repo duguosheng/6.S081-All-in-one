@@ -6,7 +6,7 @@
 		"-search",
 		"search-pro",
 		"github",
-		"chapter-fold",
+		"expandable-chapters",
 		"code-optimize",
 		"splitter",
 		"pageview-count",
@@ -14,7 +14,8 @@
 		"tbfed-pagefooter",
 		"flexible-alerts",
 		"ancre-navigation",
-		"custom-favicon"
+		"custom-favicon",
+		"github-buttons"
 	],
 	"pluginsConfig": {
 		"donate": {
@@ -40,6 +41,15 @@
 		"code-optimize": {
 			"copyButtons": true,
 			"showLines": false
+		},
+		"github-buttons": {
+			"repo": "duguosheng/6.S081-All-in-one",
+			"types": [
+				"star",
+				"watch",
+				"fork"
+			],
+			"size": "small"
 		}
 	}
 }
