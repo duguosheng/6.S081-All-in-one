@@ -28,11 +28,7 @@
 
 # 文件系统可靠性
 
-There are a number of issues at stake when we talk about filesystem reliability. For the purpose of this particular project, we are interested primarily in the reliability with which we can recover the contents of a crashed filesystem, and we can identify several aspects of this: 
-
 当我们谈论文件系统的可靠性时，有许多问题利害攸关。就本特定项目而言，我们主要关心的是恢复崩溃文件系统内容的可靠性，我们可以确定其中的几个方面：
-
-Preservation: data which was stable on disk before the crash should never ever be damaged. Obviously, files which were being written out at the time of the crash cannot be guaranteed to be perfectly intact, but any files which were already safe on disk must not be touched by the recovery system. 
 
 **保持（Preservation）**：崩溃前磁盘上稳定的数据永远不会被损坏。显然，崩溃时正在写入的文件不能保证完全完好无损，但是恢复系统不能碰磁盘上已经安全的任何文件。
 
