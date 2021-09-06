@@ -103,6 +103,7 @@
   * [Lab8: Locks](labs/requirements/lab8.md)
   * [Lab9: File system](labs/requirements/lab9.md)
   * [Lab10: Mmap](labs/requirements/lab10.md)
+  * [Lab11: Network](labs/requirements/lab11.md)
 * [实验解析](labs/answers/summary.md)
   * [Lab4: Traps](labs/answers/lab4.md)
   * [Lab5: Xv6 lazy page allocation](labs/answers/lab5.md)
