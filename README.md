@@ -25,4 +25,6 @@
 
 如果你觉得翻译有用而且愿意的话，欢迎请我一杯咖啡或者是一包辣条（doge）
 
+​							微信																	支付宝
+
 <img src="images/wechatpay.png" alt="wechatpay" height=300 /><img src="images/alipay.png" alt="alipay" height=300 />
