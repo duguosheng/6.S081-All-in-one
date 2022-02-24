@@ -18,3 +18,11 @@
 更好的浏览体验，请查看[6.S081-All-In-One-Gitbook(xv6.dgs.zone)](http://xv6.dgs.zone/)
 
 这些笔记开始时写在了飞书上，飞书不支持导出markdown，因此是从飞书上逐篇复制下来的，二者存在一些格式差异，我已经进行了修改，但仍然可能有部分没有注意到~
+
+
+
+# BY ME A COFFEE
+
+如果你觉得翻译有用而且愿意的话，欢迎请我一杯咖啡或者是一包辣条（doge）
+
+<img src="images/wechatpay.png" alt="wechatpay" height=300 /><img src="images/alipay.png" alt="alipay" height=300 />
