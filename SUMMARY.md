@@ -105,6 +105,7 @@
   * [Lab10: Mmap](labs/requirements/lab10.md)
   * [Lab11: Network](labs/requirements/lab11.md)
 * [实验解析](labs/answers/summary.md)
+  * [Lab1: Util](labs/answers/lab1.md)
   * [Lab4: Traps](labs/answers/lab4.md)
   * [Lab5: Xv6 lazy page allocation](labs/answers/lab5.md)
   * [Lab6: Copy-on-Write Fork for xv6](labs/answers/lab6.md)
