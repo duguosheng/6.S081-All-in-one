@@ -64,7 +64,7 @@ $
 **提示：**
 
 -  在***Makefile***的**UPROGS**中添加`$U/_trace`
-- 运行`make qemu`，您将看到编译器无法编译***user/trace.c***，因为系统调用的用户空间存根还不存在：将系统调用的原型添加到***user/user.h***，存根添加到***user/usys.pl***，以及将系统调用编号添加到***kernel/syscall.h***，***Makefile***调用perl脚本***user/usys.pl***，它生成实际的系统调用存根***user/usys.S***，这个文件中的汇编代码使用RISC-V的`ecall`指令转换到内核。一旦修复了编译问题（*注：如果编译还未通过，尝试先*`*make clean*`*，再执行*`*make qemu*`），就运行`trace 32 grep hello README`；但由于您还没有在内核中实现系统调用，执行将失败。
+- 运行`make qemu`，您将看到编译器无法编译***user/trace.c***，因为系统调用的用户空间存根还不存在：将系统调用的原型添加到***user/user.h***，存根添加到***user/usys.pl***，以及将系统调用编号添加到***kernel/syscall.h***，***Makefile***调用perl脚本***user/usys.pl***，它生成实际的系统调用存根***user/usys.S***，这个文件中的汇编代码使用RISC-V的`ecall`指令转换到内核。一旦修复了编译问题（*注：如果编译还未通过，尝试先`make clean`，再执行`make qemu`*），就运行`trace 32 grep hello README`；但由于您还没有在内核中实现系统调用，执行将失败。
 - 在***kernel/sysproc.c***中添加一个`sys_trace()`函数，它通过将参数保存到`proc`结构体（请参见***kernel/proc.h***）里的一个新变量中来实现新的系统调用。从用户空间检索系统调用参数的函数在***kernel/syscall.c***中，您可以在***kernel/sysproc.c***中看到它们的使用示例。
 - 修改`fork()`（请参阅***kernel/proc.c***）将跟踪掩码从父进程复制到子进程。
 - 修改***kernel/syscall.c***中的`syscall()`函数以打印跟踪输出。您将需要添加一个系统调用名称数组以建立索引。
