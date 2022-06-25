@@ -107,6 +107,7 @@
 * [实验解析](labs/answers/summary.md)
   * [Lab1: Util](labs/answers/lab1.md)
   * [Lab2: Syscall](labs/answers/lab2.md)
+  * [Lab3: Pgtbl](labs/answers/lab3.md)
   * [Lab4: Traps](labs/answers/lab4.md)
   * [Lab5: Xv6 lazy page allocation](labs/answers/lab5.md)
   * [Lab6: Copy-on-Write Fork for xv6](labs/answers/lab6.md)
