@@ -162,7 +162,7 @@ int sigalarm(int ticks, void (*handler)());
 int sigreturn(void);
 ```
 
-- 更新***user/usys.pl***（此文件生成***user/usys.S***）、***kernel/syscall.h***和***kernel/syscall.c***以允许`alarmtest`调用`sigalarm`和`sigreurn`系统调用。
+- 更新***user/usys.pl***（此文件生成***user/usys.S***）、***kernel/syscall.h***和***kernel/syscall.c***以允许`alarmtest`调用`sigalarm`和`sigreturn`系统调用。
 
 - 目前来说，你的`sys_sigreturn`系统调用返回应该是零。
 
@@ -194,7 +194,7 @@ make CPUS=1 qemu-gdb
 
 `alarmtest`打印“alarm!”后，很可能会在`test0`或`test1`中崩溃，或者`alarmtest`（最后）打印“test1 failed”，或者`alarmtest`未打印“test1 passed”就退出。要解决此问题，必须确保完成报警处理程序后返回到用户程序最初被计时器中断的指令执行。必须确保寄存器内容恢复到中断时的值，以便用户程序在报警后可以不受干扰地继续运行。最后，您应该在每次报警计数器关闭后“重新配置”它，以便周期性地调用处理程序。
 
-作为一个起始点，我们为您做了一个设计决策：用户报警处理程序需要在完成后调用`sigreurn`系统调用。请查看***alarmtest.c***中的`periodic`作为示例。这意味着您可以将代码添加到`usertrap`和`sys_sigreurn`中，这两个代码协同工作，以使用户进程在处理完警报后正确恢复。
+作为一个起始点，我们为您做了一个设计决策：用户报警处理程序需要在完成后调用`sigreturn`系统调用。请查看***alarmtest.c***中的`periodic`作为示例。这意味着您可以将代码添加到`usertrap`和`sys_sigreturn`中，这两个代码协同工作，以使用户进程在处理完警报后正确恢复。
 
 
 
@@ -202,7 +202,7 @@ make CPUS=1 qemu-gdb
 
 - 您的解决方案将要求您保存和恢复寄存器——您需要保存和恢复哪些寄存器才能正确恢复中断的代码？(提示：会有很多）
 
-- 当计时器关闭时，让`usertrap`在`struct proc`中保存足够的状态，以使`sigreurn`可以正确返回中断的用户代码。
+- 当计时器关闭时，让`usertrap`在`struct proc`中保存足够的状态，以使`sigreturn`可以正确返回中断的用户代码。
 
 - 防止对处理程序的重复调用——如果处理程序还没有返回，内核就不应该再次调用它。`test2`测试这个。
 
