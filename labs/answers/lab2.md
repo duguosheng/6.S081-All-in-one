@@ -43,6 +43,27 @@ sys_trace(void)
 }
 ```
 
+由于`struct proc`中增加了一个新的变量,当`fork`的时候我们也需要将这个变量传递到子进程中(提示中已说明)
+
+```c
+//kernel/proc.c
+int
+fork(void)
+{
+  // ...
+
+  safestrcpy(np->name, p->name, sizeof(p->name));
+
+  //将trace_mask拷贝到子进程
+  np->trace_mask = p->trace_mask;
+
+  pid = np->pid;
+  // ...
+
+  return pid;
+}
+```
+
 接下来应当考虑如何进行系统调用追踪了，根据提示，这将在`syscall()`函数中实现。下面是实现代码，需要注意的是条件判断中使用了`&`而不是`==`，这是因为在实验说明书的例子中，`trace 2147483647 grep hello README`将所有31个低位置为1，使得其可以追踪所有的系统调用。
 
 ```c
