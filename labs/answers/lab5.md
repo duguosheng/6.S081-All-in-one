@@ -13,7 +13,8 @@ sys_sbrk(void)
 
   if(argint(0, &n) < 0)
     return -1;
-
+  
+  addr = myproc()->sz;
   // lazy allocation
   myproc()->sz += n;
 
