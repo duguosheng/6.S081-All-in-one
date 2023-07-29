@@ -155,33 +155,148 @@ uvmunmap(pagetable_t pagetable, uint64 va, uint64 npages, int do_free)
 
   - 陷入内核**==>**`usertrap`中`r_scause()==13||r_scause()==15`的分支**==>**分配内存**==>**回到用户空间
 
-因此就需要找到在何时系统调用会使用这些地址，将地址传入系统调用后，会通过`argaddr`函数(***kernel/syscall.c***)从寄存器中读取，因此在这里添加物理内存分配的代码
+因此就需要找到在何时系统调用会使用这些地址。将地址传入系统调用后，kernel会通过`copyin`函数，`copyinstr`函数，`copyout`函数(***kernel/vm.c***)读写由用户地址指定的物理内存，因此在这三个函数中添加物理内存分配的代码（事实上由于测试用例不够强，不在`copyinstr`中添加逻辑也能通过测试，这里需要注意还是得加上的）：
 
 ```c
+// Copy from kernel to user.
+// Copy len bytes from src to virtual address dstva in a given page table.
+// Return 0 on success, -1 on error.
 int
-argaddr(int n, uint64 *ip)
+copyout(pagetable_t pagetable, uint64 dstva, char *src, uint64 len)
 {
-  *ip = argraw(n);
-  struct proc* p = myproc();
+  uint64 n, va0, pa0;
 
-  // 处理向系统调用传入lazy allocation地址的情况
-  if(walkaddr(p->pagetable, *ip) == 0) {
-    if(PGROUNDUP(p->trapframe->sp) - 1 < *ip && *ip < p->sz) {
-      char* pa = kalloc();
-      if(pa == 0)
-        return -1;
-      memset(pa, 0, PGSIZE);
-
-      if(mappages(p->pagetable, PGROUNDDOWN(*ip), PGSIZE, (uint64)pa, PTE_R | PTE_W | PTE_X | PTE_U) != 0) {
-        kfree(pa);
+  while(len > 0){
+    va0 = PGROUNDDOWN(dstva);
+    pa0 = walkaddr(pagetable, va0);
+    // if(pa0 == 0)
+    //   return -1;
+    if(pa0 == 0){
+      struct proc* p = myproc();
+      if(p->trapframe->sp <= va0 && va0 < p->sz){
+          char* pa = kalloc();
+          if(pa == 0)
+            return -1;
+          memset(pa, 0, PGSIZE);
+          if(mappages(p->pagetable, PGROUNDDOWN(va0), PGSIZE, (uint64)pa, PTE_R | PTE_W | PTE_X | PTE_U) != 0) {
+            kfree(pa);
+            return -1;
+          }
+          pa0 = (uint64)pa;
+      } else {
         return -1;
       }
-    } else {
-      return -1;
     }
-  }
+    n = PGSIZE - (dstva - va0);
+    if(n > len)
+      n = len;
+    memmove((void *)(pa0 + (dstva - va0)), src, n);
 
+    len -= n;
+    src += n;
+    dstva = va0 + PGSIZE;
+  }
   return 0;
+}
+
+// Copy from user to kernel.
+// Copy len bytes to dst from virtual address srcva in a given page table.
+// Return 0 on success, -1 on error.
+int
+copyin(pagetable_t pagetable, char *dst, uint64 srcva, uint64 len)
+{
+  uint64 n, va0, pa0;
+
+  while(len > 0){
+    va0 = PGROUNDDOWN(srcva);
+    pa0 = walkaddr(pagetable, va0);
+    // if(pa0 == 0)
+    //   return -1;
+    if(pa0 == 0){
+      struct proc* p = myproc();
+      if(p->trapframe->sp <= va0 && va0 < p->sz){
+          char* pa = kalloc();
+          if(pa == 0)
+            return -1;
+          memset(pa, 0, PGSIZE);
+          if(mappages(p->pagetable, PGROUNDDOWN(va0), PGSIZE, (uint64)pa, PTE_R | PTE_W | PTE_X | PTE_U) != 0) {
+            kfree(pa);
+            return -1;
+          }
+          pa0 = (uint64)pa;
+      } else {
+        return -1;
+      }
+    }
+    n = PGSIZE - (srcva - va0);
+    if(n > len)
+      n = len;
+    memmove(dst, (void *)(pa0 + (srcva - va0)), n);
+
+    len -= n;
+    dst += n;
+    srcva = va0 + PGSIZE;
+  }
+  return 0;
+}
+
+// Copy a null-terminated string from user to kernel.
+// Copy bytes to dst from virtual address srcva in a given page table,
+// until a '\0', or max.
+// Return 0 on success, -1 on error.
+int
+copyinstr(pagetable_t pagetable, char *dst, uint64 srcva, uint64 max)
+{
+  uint64 n, va0, pa0;
+  int got_null = 0;
+
+  while(got_null == 0 && max > 0){
+    va0 = PGROUNDDOWN(srcva);
+    pa0 = walkaddr(pagetable, va0);
+    // if(pa0 == 0)
+    //   return -1;
+    if(pa0 == 0){
+      struct proc* p = myproc();
+      if(p->trapframe->sp <= va0 && va0 < p->sz){
+          char* pa = kalloc();
+          if(pa == 0)
+            return -1;
+          memset(pa, 0, PGSIZE);
+          if(mappages(p->pagetable, PGROUNDDOWN(va0), PGSIZE, (uint64)pa, PTE_R | PTE_W | PTE_X | PTE_U) != 0) {
+            kfree(pa);
+            return -1;
+          }
+          pa0 = (uint64)pa;
+      } else {
+        return -1;
+      }
+    }
+    n = PGSIZE - (srcva - va0);
+    if(n > max)
+      n = max;
+
+    char *p = (char *) (pa0 + (srcva - va0));
+    while(n > 0){
+      if(*p == '\0'){
+        *dst = '\0';
+        got_null = 1;
+        break;
+      } else {
+        *dst = *p;
+      }
+      --n;
+      --max;
+      p++;
+      dst++;
+    }
+
+    srcva = va0 + PGSIZE;
+  }
+  if(got_null){
+    return 0;
+  } else {
+    return -1;
+  }
 }
 ```
 
