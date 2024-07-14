@@ -8,7 +8,7 @@
 
 # 常用网址
 
-- 课程官网：[6.S081 Fall 2020](https://pdos.csail.mit.edu/6.828/2020/xv6.html)
+- 课程官网：[6.S081 Fall 2020](https://pdos.csail.mit.edu/6.828/2020/xv6.html) 或者 [6.S081 Fall 2023](https://pdos.csail.mit.edu/6.S081/2023/)
 - 课程视频：[6.S081--bilibili](https://www.bilibili.com/video/BV19k4y1C7kA?from=search&seid=5542820295808098475)
 - 视频翻译：[6.S081课程翻译--gitbook](https://mit-public-courses-cn-translatio.gitbook.io/mit6-s081/)
 - 我的实验仓库：有同学反映说MIT的老师不喜欢这种公开实验代码的行为，所以转为了私有仓库~
