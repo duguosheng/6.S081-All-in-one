@@ -20,7 +20,7 @@
     * [2.7 真实世界](tranlate_books/book-riscv-rev1/c2/s7.md)
     * [2.8 练习](tranlate_books/book-riscv-rev1/c2/s8.md)
   * [第三章 页表](tranlate_books/book-riscv-rev1/c3/s0.md)
-    * [3.1 页式硬件](tranlate_books/book-riscv-rev1/c3/s1.md)
+    * [3.1 分页硬件](tranlate_books/book-riscv-rev1/c3/s1.md)
     * [3.2 内核地址空间](tranlate_books/book-riscv-rev1/c3/s2.md)
     * [3.3 代码：创建一个地址空间](tranlate_books/book-riscv-rev1/c3/s3.md)
     * [3.4 物理内存分配](tranlate_books/book-riscv-rev1/c3/s4.md)
